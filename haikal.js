@@ -43,6 +43,9 @@ const { iphone6 } = require('./baseikal/virtex/iphone6')
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, getGroupAdmins } = require('./baseikal/lib/myfunc')
 const { FajarNews, BBCNews, metroNews, CNNNews, iNews, KumparanNews, TribunNews, DailyNews, DetikNews, OkezoneNews, CNBCNews, KompasNews, SindoNews, TempoNews, IndozoneNews, AntaraNews, RepublikaNews, VivaNews, KontanNews, MerdekaNews, KomikuSearch, AniPlanetSearch, KomikFoxSearch, KomikStationSearch, MangakuSearch, KiryuuSearch, KissMangaSearch, KlikMangaSearch, PalingMurah, LayarKaca21, AminoApps, Mangatoon, WAModsSearch, Emojis, CoronaInfo, JalanTikusMeme,Cerpen, Quotes, Couples, Darkjokes } = require("dhn-api");
 //=================================================//
+runvia = 'herokuapp.com'
+namaowner = 'Fajar Alfarizi'
+namabotz = 'Felix MD'
 //=================================================//
 virgam = fs.readFileSync(`./baseikal/image/deden.jpeg`)
 const content = JSON.stringify(m.message)
@@ -4173,11 +4176,15 @@ break
 case 'menu': {
 if (isBan) throw sticBanLu(from)
 haikal.sendMessage(m.chat, { image: kalimage, caption: `◎ Owner : ${botname}
-◎ Lib : Multi-Device
-◎ Terbit : *01-09-1999*
 
-[ 🇲🇨 Ini adalah Bot Pribadi  Dari Indonesia 👋 ]
-▬▭▬▭▬▭▬▭▬▬▭▬▭▬
+Information bot🔐
+Name bot : *${namabotz}*
+Owner name : *${namaowner}*
+Lib : *Baileys*
+Status : *Online*
+Running with : *${runvia}*
+Runtime : *${runtime(os.uptime())}*
+
 *MENU*
 ┏━━⊱
 ┣❏➥ bugmenu
@@ -4205,7 +4212,7 @@ haikal.sendMessage(m.chat, { image: kalimage, caption: `◎ Owner : ${botname}
 contact me Wa.me/6281333782061
 ▬▭▬▭▬▭▬▭▬▬▭▬▭▬
 Base Script
-©Haikal`, contextInfo:{"externalAdReply": {"title": `SC FELIX-MD`,"body": `Selamat ${salam} kak ${pushname}`,
+©Fajar`, contextInfo:{"externalAdReply": {"title": `SC FELIX-MD`,"body": `Selamat ${salam} kak ${pushname}`,
 previewType: "PHOTO",
 showAdAttribution: true,
 sourceUrl: `https://instagram.com/mhmdfjralfarizi_`,
