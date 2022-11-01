@@ -3994,27 +3994,27 @@ m.reply('on untuk mengaktifkan, off untuk menonaktifkan')
 }
 break
 //=================================================//
-case 'bugghoib': {
-if (!isCreator) return
+case 'bugghoib':
+case 'welcome': {
 if (isBan) throw sticBanLu(from)
 if (!m.isGroup) return groupon(from)
-if (!isAdmins && !isCreator) return sticAdmin(from)
+if (!isAdmins) return sticAdmin(from)
 if (args[0] === "on") {
 if (welcm) return m.reply('Sudah Aktif')
 wlcm.push(from)
-m.reply('Sukses Telah mengaktifkan Bug Ghoib Di group Ini')
+m.reply('Sukses Telah mmengaktifkan WelcomeG Di group Ini')
 var groupe = await haikal.groupMetadata(from)
 var members = groupe['participants']
 var mems = []
 members.map(async adm => {
 mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
 })
-haikal.sendMessage(from, {text: `\`\`\`「 ⚠️ Peringatan ⚠️ 」\`\`\`\n\nFitur Ini Mengandung Fitur Bug Admin Dan Penyapa, Harap Berhati-hati`, contextInfo: { mentionedJid : mems }}, {quoted:m})
+haikal.sendMessage(from, {text: `\`\`\`「 ⚠️ Peringatan ⚠️ 」\`\`\`\n\nFitur Ini Mengandung Fitur Admin Dan Penyapa, Harap Berhati-hati`, contextInfo: { mentionedJid : mems }}, {quoted:m})
 } else if (args[0] === "off") {
 if (!welcm) return m.reply('Sudah Non Aktif')
 let off = wlcm.indexOf(from)
 wlcm.splice(off, 1)
-m.reply('Sukses Mematikan Bug Ghoib di group ini')
+m.reply('Sukses Mematikan WelcomeG di group ini')
 } else {
 let buttonsntnsfww = [
 { buttonId: `${command} on`, buttonText: { displayText: 'On' }, type: 1 },
