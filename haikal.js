@@ -1717,13 +1717,7 @@ haikal.sendMessage(m.chat, { image: anu, caption: `NihKak` }, { quoted: m})
 }
 break
 //=================================================//
-case 'animek': case 'anime':{
-if (isBan) throw sticBanLu(from)
-axios.get(`https://api.waifu.pics/sfw/waifu`)
-.then(({data}) => {
-haikal.sendImage(m.chat, data.url, mess.success, m)
-})
-break
+
 //=================================================//
 case 'darkjoke':{
 if (isBan) throw sticBanLu(from)
