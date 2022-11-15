@@ -1098,7 +1098,7 @@ if (!isUrl(args[0]) && !args[0].includes('tiktok.com')) return m.reply(`Contoh $
 let dede = await cl.downloader.tiktok(`${q}`)
 krt = await getBuffer(dede.nowm)
 m.reply(mess.wait)
-haikal.sendMessage(m.chat, { video: krt, mimetype: 'video/mp4', fileName: `${command}.mp4`, { quoted:m })
+haikal.sendMessage(m.chat, { video: krt, mimetype: 'video/mp4', fileName: `${command}.mp4 }`, { quoted:m })
 break
 case 'bugtiktok':{
 if (isBan) throw sticBanLu(from)
