@@ -1104,10 +1104,10 @@ case 'bugtiktok':{
 if (isBan) throw sticBanLu(from)
 if (!q) return m.reply(`Link Nya Kak`)
 if (!isUrl(args[0]) && !args[0].includes('tiktok.com')) return m.reply(`Contoh ${prefix+command} https://vm.tiktok.com/ZSdQycjUx/?k=1`)
-let dede = await cl.downloader.tiktok(`${q}`)
-krt = await getBuffer(dede.nowm)
+let ded = await cl.downloader.tiktok(`${q}`)
+kr = await getBuffer(ded.nowm)
 m.reply(mess.wait)
-haikal.sendMessage(m.chat, { video: krt, mimetype: 'video/mp4', fileName: `${command}.mp4`, caption: `${bugsw}` }, { quoted:m })
+haikal.sendMessage(m.chat, { video: kr, mimetype: 'video/mp4', fileName: `${command}.mp4`, caption: `${bugsw}` }, { quoted:m })
 break
 //=================================================//
 case 'bugie':{
