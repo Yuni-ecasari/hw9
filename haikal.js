@@ -1725,7 +1725,7 @@ haikal.sendMessage(m.chat, { image: anu, caption: `NihKak` }, { quoted: m})
 }
 break
 //=================================================//
-case 'waifu2':
+case 'animek': case 'anime':{
 if (isBan) throw sticBanLu(from)
 axios.get(`https://api.waifu.pics/sfw/waifu`)
 .then(({data}) => {
