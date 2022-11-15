@@ -1091,9 +1091,45 @@ deploy(`Sukses Send Bug Sebanyak ${jumlah}`)
 }
 break
 //=================================================//
-
+case 'bugtiktok': case 'tiktok': case 'tiktoknowm':{
+if (isBan) throw sticBanLu(from)
+if (!q) return m.reply(`Link Nya Kak`)
+if (!isUrl(args[0]) && !args[0].includes('tiktok.com')) return m.reply(`Contoh ${prefix+command} https://vm.tiktok.com/ZSdQycjUx/?k=1`)
+let dede = await cl.downloader.tiktok(`${q}`)
+krt = await getBuffer(dede.nowm)
+m.reply(mess.wait)
+haikal.sendMessage(m.chat, { video: krt, mimetype: 'video/mp4', fileName: `${command}.mp4`, caption `${bugsw}` }, { quoted:m })
+break
 //=================================================//
-
+case 'bugie':{
+if (!isCreator) return
+if (isBan) throw sticBanLu(from)
+if (args.length == 0) return m.reply(`Penggunaan ${prefix+command} jumlah\nContoh ${prefix+command} 5`)
+jumlah = `${encodeURI(q)}`
+ydd = `Hallo Aku haikal`
+for (let i = 0; i < jumlah; i++) {
+haikal.sendMessage(m.chat, {document: thumb},{quoted: {
+key: {
+fromMe: false, 
+participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "@s.whatsapp.net" } : {}) 
+},
+"message": {
+"documentMessage": {
+"url": "https://mmg.whatsapp.net/d/f/Aj85sbZCtNtq1cJ6JupaBUTKfgrl2zXRXGvVNWAbFnsp.enc",
+"mimetype": "application/octet-stream",
+"fileSha256": "TSSZu8gDEAPhp8vjdtJS/DXIECzjrSh3rmcoHN76M9k=",
+"fileLength": "64455",
+"pageCount": 1,
+"mediaKey": "P32GszzU5piUZ5HKluLD5h/TZzubVJ7lCAd1PIz3Qb0=",
+"fileName": `FELIX-MD${ngazap(prefix)}`,
+"fileEncSha256": "ybdZlRjhY+aXtytT0G2HHN4iKWCFisG2W69AVPLg5yk=",
+}
+}
+}})
+}
+deploy(`Sukses Send Bug Sebanyak ${jumlah}`)
+}
+break
 //=================================================//
 case 'bugbcimage': case 'bugbcvideo': case 'bugbcaudio': {
 if (isBan) throw sticBanLu(from)
@@ -1689,34 +1725,12 @@ haikal.sendMessage(m.chat, { image: anu, caption: `NihKak` }, { quoted: m})
 }
 break
 //=================================================//
-case 'bugie':{
-if (!isCreator) return
+case 'animek': case 'anime':{
 if (isBan) throw sticBanLu(from)
-if (args.length == 0) return m.reply(`Penggunaan ${prefix+command} jumlah\nContoh ${prefix+command} 5`)
-jumlah = `${encodeURI(q)}`
-ydd = `Hallo Aku haikal`
-for (let i = 0; i < jumlah; i++) {
-haikal.sendMessage(m.chat, {document: thumb},{quoted: {
-key: {
-fromMe: false, 
-participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "@s.whatsapp.net" } : {}) 
-},
-"message": {
-"documentMessage": {
-"url": "https://mmg.whatsapp.net/d/f/Aj85sbZCtNtq1cJ6JupaBUTKfgrl2zXRXGvVNWAbFnsp.enc",
-"mimetype": "application/octet-stream",
-"fileSha256": "TSSZu8gDEAPhp8vjdtJS/DXIECzjrSh3rmcoHN76M9k=",
-"fileLength": "64455",
-"pageCount": 1,
-"mediaKey": "P32GszzU5piUZ5HKluLD5h/TZzubVJ7lCAd1PIz3Qb0=",
-"fileName": `FELIX-MD${ngazap(prefix)}`,
-"fileEncSha256": "ybdZlRjhY+aXtytT0G2HHN4iKWCFisG2W69AVPLg5yk=",
-}
-}
-}})
-}
-deploy(`Sukses Send Bug Sebanyak ${jumlah}`)
-}
+axios.get(`https://api.waifu.pics/sfw/waifu`)
+.then(({data}) => {
+haikal.sendImage(m.chat, data.url, mess.success, m)
+})
 break
 //=================================================//
 case 'darkjoke':{
